@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "n4t5d8gl1u0yluf^^p*oyc0ptnc)d9$qk!d2583g0&cjv@wdxj"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["127.0.0.1", "money-expense-manager.herokuapp.com"]
 
@@ -121,11 +121,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = "1Money-ExpenseManager/static/"
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-STATIC_ROOT = os.path.join(os.path.dirname(
-    BASE_DIR), "1Money-ExpenseManager", "static")
 
-MEDIA_URL = "1Money-ExpenseManager/media/"
-MEDIA_ROOT = os.path.join(os.path.dirname(
-    BASE_DIR), "1Money-ExpenseManager", "media_cdn")
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
